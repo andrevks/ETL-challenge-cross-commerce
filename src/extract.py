@@ -4,6 +4,12 @@ from requests.exceptions import HTTPError, Timeout
 import time
 import datetime
 
+def getExtractedNumbersFromPage(pageNumber):
+    url = f'http://challenge.dienekes.com.br/api/numbers?page={pageNumber}'
+    resp = requests.get(url)
+    numbers = resp.json()
+    return numbers
+
 def extract():
     extractedNumbers = []
     startTime = time.time()
@@ -11,25 +17,21 @@ def extract():
     try:
         pageNumber = 1
         while True:
-            url = f'http://challenge.dienekes.com.br/api/numbers?page={pageNumber}'
-            resp = requests.get(url)
-            numbers = resp.json()
-
+            numbers = getExtractedNumbersFromPage(pageNumber)
 
             if 'numbers' in numbers:
-                numbers = resp.json()['numbers']
+                numbers = numbers['numbers']
                 if not numbers:
                     break
                 elemCount += len(numbers)
                 print(f'PAGE: {pageNumber} - Total of {elemCount} elements')
                 extractedNumbers.extend(numbers)
             elif 'error' in numbers:
-                print(f'Server ERROR: Page {pageNumber} haven\'t returned numbers.')
+                print(f'Server ERROR: Page {pageNumber} haven\'t returned numbers. Getting from next PAGE...')
 
             pageNumber += 1
 
         executionTime = str((time.time() - startTime))
-        # print(f'List of extracted numbers: {extractedNumbers}')
         dt_data = datetime.datetime.now()
         day = str(dt_data.strftime("%d-%b-%Y"))
         filename = f'src\\dataWarehouse\\extracted\\extractedNumbers-{day}.json'

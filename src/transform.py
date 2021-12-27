@@ -54,49 +54,49 @@ def get_recent_file(path='src\\dataWarehouse\\extracted\\*.json' ):
         print(f'Error ocurred when getting recent file: {err}')
 
 
-# def transform():
-#     orderedNumbers = []
-#     try:
-#         abs_path = 'C:\\Users\\andre\\PycharmProjects\\flaskProjectETLCrossCommerce\\src\\dataWarehouse'
-#         save_path = f'{abs_path}\\extracted\\*.json'
-#         filename = get_recent_file(abs_path)
-#         with open(filename, 'r') as inputFile:
-#             numbersExtracted = json.load(inputFile)
-#
-#         print(f'----Before Transforming-----')
-#         count = 0
-#         # O(n)
-#         for number in numbersExtracted:
-#             count += 1
-#
-#         print(f'Numbers Extracted: {count}')
-#
-#         print('>> initiating Transformation...')
-#
-#         startTime = time.time()
-#         orderedNumbers = mergeSort(numbersExtracted)
-#         executionTime = str((time.time() - startTime))
-#
-#         print("\n-----------------------------------")
-#         print('Success')
-#         print(f" Took {executionTime} s to TRANSFORM")
-#         print("-----------------------------------")
-#         day = filename.split('extractedNumbers' , 1)[1]
-#         if 'test' in filename:
-#             savedFileName = f'{abs_path}\\transformed\\test_transformedNumbers{day}'
-#         else:
-#             savedFileName = f'{abs_path}\\transformed\\transformedNumbers{day}'
-#
-#         json_transformedNumbers = json.dumps(orderedNumbers, indent=4)
-#         with open(savedFileName, 'w') as outfile:
-#             outfile.write(json_transformedNumbers)
-#             # json.dump(orderedNumbers , outfile , indent=4)
-#         print("\n-----------------------------------")
-#         print(f'>> Transformed NUMBERS were saved in: \n --> {savedFileName}')
-#         print("-----------------------------------\n")
-#
-#
-#     except Exception as ex:
-#         print(f'Error in Transforming: {ex}')
+def transform():
+    orderedNumbers = []
+    try:
+        abs_path = 'src\\dataWarehouse'
+        save_path = f'{abs_path}\\extracted\\*.json'
+        filename = get_recent_file(save_path)
+        with open(filename, 'r') as inputFile:
+            numbersExtracted = json.load(inputFile)
+
+        print(f'----Before Transforming-----')
+        count = 0
+        # O(n)
+        for number in numbersExtracted:
+            count += 1
+
+        print(f'Numbers Extracted: {count}')
+
+        print('>> initiating Transformation...')
+
+        startTime = time.time()
+        orderedNumbers = mergeSort(numbersExtracted)
+        executionTime = str((time.time() - startTime))
+
+        print("\n-----------------------------------")
+        print('Success')
+        print(f" Took {executionTime} s to TRANSFORM")
+        print("-----------------------------------")
+        day = filename.split('extractedNumbers' , 1)[1]
+        if 'test' in filename:
+            savedFileName = f'{abs_path}\\transformed\\test_transformedNumbers{day}'
+        else:
+            savedFileName = f'{abs_path}\\transformed\\transformedNumbers{day}'
+
+        json_transformedNumbers = json.dumps(orderedNumbers, indent=4)
+        with open(savedFileName, 'w') as outfile:
+            outfile.write(json_transformedNumbers)
+            # json.dump(orderedNumbers , outfile , indent=4)
+        print("\n-----------------------------------")
+        print(f'>> Transformed NUMBERS were saved in: \n --> {savedFileName}')
+        print("-----------------------------------\n")
+
+
+    except Exception as ex:
+        print(f'Error in Transforming: {ex}')
 
 
