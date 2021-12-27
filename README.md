@@ -33,7 +33,9 @@ programming language, modeling, frameworks.
 ## Instructions
 
 ### Requirements 
+
 Python 3.8+
+
 PIP 20.2.3+
 
 - Create a virtual environment
