@@ -30,10 +30,12 @@ containing the numbers sorted. You can choose the
 programming language, modeling, frameworks.
 
 
-##Instructions
+## Instructions
 
 ### Requirements 
+
 Python 3.8+
+
 PIP 20.2.3+
 
 - Create a virtual environment
