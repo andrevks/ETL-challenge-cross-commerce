@@ -82,7 +82,24 @@ And it's ready to use
 
 - Execute **unit test**:
 
-  go to tests folder and execute:
+  First go to the main function and pass test=True as a parameter
+    ```sh
+      #inside main.py:
+      def main(test=False):
+      if not test:
+      extract()
+      transform()
+      server.run()
+
+
+      main(test=True)
+    ```
+    After that, just run:
+    ```sh
+      python main.py
+    ```
+  
+    On tests folder, execute:
     ```sh
     pytest
     ```

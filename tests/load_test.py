@@ -1,14 +1,11 @@
+import threading
+
 import pytest
 import requests
 import json
 import pytest
-from src.server.instance import server
-from src.controllers.load import *
+import threading
 
-
-# @pytest.fixture(scope='session', autouse=True)
-# def setup_server():
-#    server.run()
 
 def test_api_numbers():
    url = 'http://127.0.0.1:5000/api/numbers/'
@@ -16,8 +13,6 @@ def test_api_numbers():
    resp = requests.get(url)
    numbers = resp.json()
 
-
-   print(f'\n{len(numbers)}')
 
    assert resp.status_code == 200
    assert resp.url == url

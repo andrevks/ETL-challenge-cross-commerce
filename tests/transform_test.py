@@ -3,7 +3,6 @@ import sys
 import os
 import datetime
 import json
-# sys.path.append('../src')
 from src.transform import mergeSort, get_recent_file, transform
 
 def generateRandomNumbers(max=10):

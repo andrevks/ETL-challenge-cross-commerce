@@ -21,12 +21,10 @@ def merge(leftArr, rightArr):
         mergedArr.append(rightArr[0])
         del rightArr[0]
 
-    # print(f'\nAfter merging: {mergedArr}\n')
     return mergedArr
 
 
 def mergeSort(arr):
-    # print(f'\narr: {arr}')
     arrLength = len(arr)
     if arrLength == 1:
         return arr
@@ -34,8 +32,6 @@ def mergeSort(arr):
     mid = int((arrLength - 1) / 2)
     leftArr = arr[0:mid+1]
     rightArr = arr[mid+1:]
-    # print(f'leftArr before: {leftArr}')
-    # print(f'rightArr before: {rightArr}')
 
     leftArr = mergeSort(leftArr)
     rightArr = mergeSort(rightArr)
@@ -90,7 +86,7 @@ def transform():
         json_transformedNumbers = json.dumps(orderedNumbers, indent=4)
         with open(savedFileName, 'w') as outfile:
             outfile.write(json_transformedNumbers)
-            # json.dump(orderedNumbers , outfile , indent=4)
+
         print("\n-----------------------------------")
         print(f'>> Transformed NUMBERS were saved in: \n --> {savedFileName}')
         print("-----------------------------------\n")
