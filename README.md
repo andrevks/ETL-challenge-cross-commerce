@@ -101,10 +101,12 @@ And it's ready to use
       python main.py
     ```
   
-    On tests folder, execute:
+    On other terminal go to tests folder and execute:
     ```sh
     pytest
     ```
+    
+    The API needs to be running so the test run correctly
 
 Note: Consider using python3 if anything worked
 
